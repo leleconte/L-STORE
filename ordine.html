@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Ordine L-STORE — Completa acquisto</title>
+<meta name="description" content="Completa il tuo ordine L-STORE e apri il ticket privato su Discord."/>
+<link href="assets/images/favicon.png" rel="icon"/>
+<link href="assets/css/style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="nav-wrap"><div class="container navbar"><a class="brand" href="index.html"><img alt="Logo L-STORE" src="assets/images/logo.png"/><span>L-STORE<small>DIGITAL SYSTEMS</small></span></a><button aria-label="Apri menu" class="nav-toggle">☰</button><nav class="nav-links"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="servizi.html">Servizi</a><a href="contatti.html">Contatti</a><a class="btn btn-primary btn-small" href="shop.html">Acquista</a></nav></div></div>
+<main>
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Ordine L-STORE</span>
+    <h1>Completa il pagamento.<br/><span class="gradient-text">Poi passa a Discord.</span></h1>
+    <p class="lead">Compila i dettagli, paga tramite PayPal.Me e, quando hai finito, apri il ticket privato Discord dove allegherai la ricevuta.</p>
+  </div>
+</section>
+<section class="section" style="padding-top:34px">
+  <div class="container order-layout">
+    <div class="contact-card order-product-card">
+      <span class="tag">PRODOTTO SELEZIONATO</span>
+      <div class="order-product-preview">
+        <img id="orderProductImage" alt="Prodotto L-STORE"/>
+        <div>
+          <h2 id="orderProductName">Caricamento...</h2>
+          <div class="payment-amount" id="orderProductPrice">—</div>
+        </div>
+      </div>
+      <div class="note">Il pagamento viene considerato valido soltanto dopo il controllo manuale dello staff L-STORE nel ticket Discord.</div>
+    </div>
+    <div class="contact-card">
+      <form id="orderForm">
+        <div class="form-grid">
+          <div class="field full"><label for="orderCustomer">Nome / nome server</label><input id="orderCustomer" required placeholder="Es. Nome del tuo server"/></div>
+          <div class="field full"><label for="orderDetails">Dettagli e richieste</label><textarea id="orderDetails" required placeholder="Descrivi configurazione, colori, funzioni o informazioni utili..."></textarea></div>
+          <div class="field full"><label for="orderTransaction">ID transazione PayPal <span class="muted">(facoltativo)</span></label><input id="orderTransaction" placeholder="Puoi inserirlo dopo il pagamento"/></div>
+        </div>
+        <div class="order-actions">
+          <button class="btn btn-primary" id="orderPayButton" type="button">Continua su PayPal.Me</button>
+          <button class="btn btn-secondary" id="orderPaidButton" type="button" hidden>Ho effettuato il pagamento</button>
+        </div>
+        <div class="order-help" id="orderHelp">Dopo il pagamento torna qui e premi <strong>Ho effettuato il pagamento</strong>. Il codice ordine verrà copiato e si aprirà Discord.</div>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="cta order-discord-cta">
+      <div><span class="eyebrow">Passaggio finale</span><h2>La ricevuta resta privata su Discord.</h2><p class="lead">Nel ticket allega screenshot o PDF della ricevuta. Lo staff vedrà prima <strong>SÌ • Pagamento ricevuto</strong> / <strong>NO • Pagamento non ricevuto</strong>; solo dopo il SÌ l'ordine passa in lavorazione.</p></div>
+      <a class="btn btn-secondary" id="openDiscordDirect" href="#">Apri Discord</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer><div class="container"><div class="footer-grid"><div><a class="brand" href="index.html"><img alt="Logo L-STORE" src="assets/images/logo.png"/><span>L-STORE<small>DIGITAL SYSTEMS</small></span></a><p class="muted" style="margin-top:14px;max-width:360px">Configurazioni Discord, bot personalizzati, sicurezza avanzata, script FiveM e siti web.</p></div><div><div class="footer-title">Esplora</div><div class="footer-links"><a href="shop.html">Shop</a><a href="servizi.html">Servizi</a></div></div><div><div class="footer-title">Assistenza</div><div class="footer-links"><a href="contatti.html">Richiedi un progetto</a><a href="contatti.html#faq">FAQ</a><a href="termini.html">Termini</a></div></div><div><div class="footer-title">Pagamenti</div><div class="footer-links"><a href="https://paypal.me/LSTORE2026" rel="noopener" target="_blank">PayPal.Me LSTORE2026</a><span>Servizi digitali su ordinazione</span></div></div></div><div class="footer-bottom"><span>© 2026 L-STORE. Tutti i diritti riservati.</span><span>Bot Discord • FiveM • Web Development</span></div></div></footer>
+<script src="assets/js/main.js"></script>
+</body></html>
