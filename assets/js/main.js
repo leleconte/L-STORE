@@ -1,7 +1,7 @@
 
 const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
 const toggle=$('.nav-toggle'), nav=$('.nav-links');
-if(toggle) toggle.addEventListener('click',()=>nav.classList.toggle('open'));
+if(toggle) toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open))});
 $$('.faq button').forEach(btn=>btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open')));
 const toast=(text)=>{let t=$('.toast');if(!t){t=document.createElement('div');t.className='toast';document.body.appendChild(t)}t.textContent=text;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400)};
 const filterBtns=$$('.filter-btn'), cards=$$('.product-card'), search=$('#shopSearch');
@@ -24,17 +24,29 @@ if(form){form.addEventListener('change',buildSummary);form.addEventListener('inp
 // ============================================================
 const LSTORE_DISCORD_PANEL_URL='https://discord.com/channels/1516383995619708978/1516390796688101398';
 const LSTORE_PRODUCTS={
+  "bot-custom":{name:"Discord Bot Completo",price:29.99,image:"assets/images/products/bot-custom.png"},
+  "discord-anti-clone":{name:"Discord Bot Anti Clone",price:9.99,image:"assets/images/logo.png"},
+  "security-v1":{name:"Security Bot V.1",price:14.99,image:"assets/images/products/security-v1.png"},
+  "security-v2":{name:"Security Bot V.2",price:24.99,image:"assets/images/products/security-v2.png"},
+  "website-statico":{name:"Sito Web Statico",price:14.99,image:"assets/images/products/website-statico.png"},
+  "debadge-veicoli":{name:"Debadge Veicoli",price:6.99,image:"assets/images/logo.png"},
+  "handling-veicoli":{name:"Handling Veicoli",price:1.99,image:"assets/images/logo.png"},
+  "pack-20-veicoli":{name:"Pack 20 Veicoli Ready to FiveM",price:29.99,image:"assets/images/logo.png"},
+  "pack-50-veicoli":{name:"Pack 50 Veicoli Ready to FiveM",price:49.99,image:"assets/images/logo.png"},
+  "pack-100-veicoli":{name:"Pack 100 Veicoli Ready to FiveM",price:89.99,image:"assets/images/logo.png"},
+  "gestionale-starter":{name:"Gestionale Starter",price:199.99,image:"assets/images/logo.png"},
+  "gestionale-business":{name:"Gestionale Business",price:249.99,image:"assets/images/logo.png"},
+  "gestionale-pro":{name:"Gestionale Pro",price:349.99,image:"assets/images/logo.png"},
+  "logo-attivita":{name:"Logo Attività Commerciale",price:49.99,image:"assets/images/logo.png"},
+  "menu-singola":{name:"Menù Singola Risoluzione",price:19.99,image:"assets/images/logo.png"},
+  "menu-doppia":{name:"Menù Doppia Risoluzione",price:29.99,image:"assets/images/logo.png"},
+
   'benvenuto':{name:'SISTEMA BENVENUTO',price:3,image:'assets/images/products/benvenuto.png'},
   'verification-system':{name:'VERIFICATION SYSTEM',price:3,image:'assets/images/products/verification-system.png'},
   'ticket-v1':{name:'TICKET V1',price:4,image:'assets/images/products/ticket-v1.png'},
   'bot-moderatore':{name:'BOT MODERATORE',price:5,image:'assets/images/products/bot-moderatore.png'},
   'bandi-panel':{name:'BANDI PANEL',price:5,image:'assets/images/products/bandi-panel.png'},
   'ticket-v2':{name:'TICKET V2',price:7,image:'assets/images/products/ticket-v2.png'},
-  'security-v1':{name:'SECURITY V1',price:15,image:'assets/images/products/security-v1.png'},
-  'website-statico':{name:'WEBSITE STATICO',price:15,image:'assets/images/products/website-statico.png'},
-  'website-shop':{name:'WEBSITE CON SHOP',price:20,image:'assets/images/products/website-shop.png'},
-  'security-v2':{name:'SECURITY V2',price:25,image:'assets/images/products/security-v2.png'},
-  'bot-custom':{name:'BOT CUSTOM COMPLETO',price:30,image:'assets/images/products/bot-custom.png'}
 };
 function lstoreRandom(prefix){const a=new Uint32Array(2);crypto.getRandomValues(a);return `${prefix}-${Date.now().toString(36).toUpperCase()}-${a[0].toString(36).toUpperCase().slice(0,5)}`}
 function lstoreBase64Url(obj){const bytes=new TextEncoder().encode(JSON.stringify(obj));let binary='';for(let i=0;i<bytes.length;i+=0x8000)binary+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return btoa(binary).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
@@ -45,17 +57,17 @@ async function lstoreOpenDiscordWithCode(prefix,payload){const code=`${prefix}.$
 const orderForm=$('#orderForm');
 if(orderForm){
   const pid=new URLSearchParams(location.search).get('product')||'';
-  const product=LSTORE_PRODUCTS[pid];
-  if(!product){location.href='shop.html'}else{
+  const product=pid==='website-shop'?null:LSTORE_PRODUCTS[pid];
+  if(!product){location.href=pid==='website-shop'?'contatti.html?service=website-shop':'shop.html'}else{
     $('#orderProductName').textContent=product.name;
     $('#orderProductPrice').textContent=formatEuro(product.price);
-    const img=$('#orderProductImage');img.src=product.image;img.alt=`Grafica ${product.name}`;
+    const img=$('#orderProductImage');img.src=product.image;img.alt=`Anteprima ${product.name}`;
     const openDirect=$('#openDiscordDirect');if(openDirect)openDirect.href=LSTORE_DISCORD_PANEL_URL;
     const pay=$('#orderPayButton'),paid=$('#orderPaidButton');
     pay?.addEventListener('click',()=>{
       const customer=$('#orderCustomer')?.value.trim()||'';const details=$('#orderDetails')?.value.trim()||'';
       if(!customer||!details){toast('Compila nome/server e dettagli prima di pagare');return}
-      window.open(`https://paypal.me/LSTORE2026/${product.price}EUR`,'_blank','noopener');
+      window.open(`https://paypal.me/LSTORE2026/${product.price.toFixed(2)}EUR`,'_blank','noopener');
       if(paid)paid.hidden=false;
       const h=$('#orderHelp');if(h)h.innerHTML='Quando il pagamento è completato premi <strong>Ho effettuato il pagamento</strong>. Ti porterò al pannello Discord e il codice ordine sarà già copiato.';
     });
@@ -88,3 +100,41 @@ if(form){
     await lstoreOpenDiscordWithCode('LQUOTE1',{v:1,quote_id:lstoreRandom('PREV'),customer_name:customer,service,details,budget:parseAmount(f.get('budget')),timing:String(f.get('timing')||''),created_at:new Date().toISOString()});
   });
 }
+
+/* Catalogo e filtri puramente di presentazione; ordini/preventivi invariati. */
+(function(){
+  const list=window.LSTORE_CATALOG||[];
+  const qs=new URLSearchParams(location.search);
+  const chosen=qs.get('service');
+  if(chosen&&document.querySelector('#service')){
+    const selected=list.find(item=>item.id===chosen);
+    if(selected){document.querySelector('#service').value=selected.name;
+      if(selected.fromPrice){const budget=document.querySelector('input[name="priceMode"][value="budget"]');if(budget){budget.checked=true;buildSummary();}}
+      const details=document.querySelector('#details');if(details&&!details.value)details.placeholder=`Descrivi il progetto per ${selected.name}…`;
+    }
+  }
+  const grid=document.querySelector('#catalogGrid');
+  if(grid){
+    const sort=document.querySelector('#catalogSort');const empty=document.querySelector('#catalogEmpty');
+    const category=document.querySelector('#catalogCategory');const query=document.querySelector('#shopSearch');
+    const cards=[...grid.querySelectorAll('[data-price]')];
+    function refresh(){let visible=0;
+      cards.forEach(card=>{const match=(!category||category.value==='all'||card.dataset.category===category.value)&&(!query||card.textContent.toLocaleLowerCase('it').includes(query.value.trim().toLocaleLowerCase('it')));card.hidden=!match;if(match)visible++});
+      if(empty)empty.hidden=visible!==0;
+      const by=sort?.value||'featured';const arranged=[...cards];
+      if(by==='name')arranged.sort((a,b)=>a.dataset.name.localeCompare(b.dataset.name,'it'));
+      if(by==='price-asc')arranged.sort((a,b)=>Number(a.dataset.price)-Number(b.dataset.price));
+      if(by==='price-desc')arranged.sort((a,b)=>Number(b.dataset.price)-Number(a.dataset.price));
+      arranged.forEach(card=>grid.appendChild(card));
+    }
+    category?.addEventListener('change',refresh);query?.addEventListener('input',refresh);sort?.addEventListener('change',refresh);
+    const hash=location.hash.replace('#','');if(['discord','web','fivem','gestionali','grafiche'].includes(hash)){category.value=hash;}refresh();
+  }
+  const pref=document.querySelector('#cookiePreferences');const prefFoot=document.querySelector('#cookiePreferencesFooter');const dialog=document.querySelector('#cookieDialog');
+  if(dialog){pref?.addEventListener('click',()=>dialog.showModal());prefFoot?.addEventListener('click',()=>dialog.showModal());dialog.querySelector('[data-close]')?.addEventListener('click',()=>dialog.close());}
+  document.querySelectorAll('[data-pay-reference]').forEach(b=>b.addEventListener('click',async()=>{
+    const prod=location.search&&new URLSearchParams(location.search).get('product');const item=list.find(p=>p.id===prod);
+    if(!item)return;await lstoreCopy(`L-STORE • ${item.name} • ${document.querySelector('#orderCustomer')?.value.trim()||'nome Discord da inserire'}`);
+    toast('Riferimento copiato. Incollalo nelle note PayPal, se disponibili, oppure nel ticket.');
+  }));
+})();

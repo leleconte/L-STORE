@@ -1,25 +1,17 @@
-L-STORE WEBSITE • VERSIONE GITHUB + DISCORD
-============================================
+L-STORE • VERSIONE PREMIUM / PAYPAL.ME PERSONALIZZATO
 
-BASE
-Questa cartella deriva dalla versione approvata:
-L-STORE-WEBSITE-SCELTA-BUDGET-O-PREZZO.zip
+Pubblicazione: sito statico (GitHub Pages compatibile), senza backend web.
 
-PAGINE
-- index.html: Home
-- shop.html: catalogo con 11 pacchetti
-- servizi.html: servizi Discord, bot, FiveM e web
-- contatti.html: Budget indicativo / Prezzo già concordato + FAQ
-- termini.html: condizioni
-- ordine.html: passaggio Shop -> PayPal.Me -> Discord
+PAYPAL.ME ESISTENTE: https://paypal.me/LSTORE2026
+- I 16 prodotti a importo fisso aprono ordine.html?product=<id> e un link PayPal.Me con importo EUR esatto (due decimali).
+- I 2 prodotti "a partire da" (Sito Web Completo e Auto Ready to FiveM) aprono contatti.html?service=<id>: preventivo e importo concordato, poi PayPal.Me personalizzato.
+- PayPal.Me non precompila in modo garantito il nome dell'articolo o il codice ordine: copiarli nelle note se presenti e nel ticket con ricevuta.
+- NON esiste verifica automatica dei pagamenti. La conferma è manuale nel ticket Discord, come nella versione originale.
+- Flussi LSTORE1 e LQUOTE1 e ID preesistenti dei prodotti già catalogati sono conservati.
+- Per i NUOVI product_id va verificato che il bot Discord esterno supporti questi identificativi: il codice del bot non è nello ZIP.
 
-PAGAMENTI
-PayPal.Me ufficiale: LSTORE2026.
-Il sito non verifica automaticamente PayPal: la conferma viene fatta manualmente dallo staff nel ticket Discord.
-
-NESSUN BACKEND WEB
-Il sito è completamente statico e può essere pubblicato su GitHub Pages.
-Ricevute e conversazione privata restano su Discord.
-
-PUBBLICAZIONE
-Carica tutto il contenuto di questa cartella nel repository GitHub Pages mantenendo la cartella assets.
+IMPORTANTE PRIMA DELLA PUBBLICAZIONE:
+- Completare/validare Privacy e Termini con dati effettivi del titolare e professionista competente.
+- Configurare dominio pubblico prima di produrre canonical e sitemap con URL assoluti.
+- Se si aggiungono analytics/marketing, implementare consenso prima di caricarli e aggiornare cookie policy.
+- Testare live PayPal.Me e Discord: uno ZIP statico non può certificare la ricezione effettiva di pagamenti.

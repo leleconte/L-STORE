@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+# Aggiungere Sitemap assoluta solo dopo aver confermato il dominio di produzione.
