@@ -8,7 +8,7 @@ const filterBtns=$$('.filter-btn'), cards=$$('.product-card'), search=$('#shopSe
 function applyFilter(){const active=$('.filter-btn.active')?.dataset.filter||'all';const q=(search?.value||'').toLowerCase();cards.forEach(card=>{const okCat=active==='all'||card.dataset.category===active;const okQ=card.innerText.toLowerCase().includes(q);card.style.display=okCat&&okQ?'flex':'none'})}
 filterBtns.forEach(b=>b.addEventListener('click',()=>{filterBtns.forEach(x=>x.classList.remove('active'));b.classList.add('active');applyFilter()}));
 if(search) search.addEventListener('input',applyFilter);
-$$('[data-copy-link]').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(b.dataset.copyLink);toast('Link PayPal.Me copiato')}catch{toast('Copia non disponibile')}}));
+$$('[data-copy-link]').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(b.dataset.copyLink);toast('Link di pagamento copiato')}catch{toast('Copia non disponibile')}}));
 const form=$('#requestForm'), summary=$('#requestSummary');
 function parseAmount(value){const normalized=String(value||'').replace(',','.').trim();const amount=Number(normalized);return Number.isFinite(amount)&&amount>0?Math.round(amount*100)/100:0}
 function formatEuro(amount){return new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR'}).format(amount||0)}
@@ -24,22 +24,22 @@ if(form){form.addEventListener('change',buildSummary);form.addEventListener('inp
 // ============================================================
 const LSTORE_DISCORD_PANEL_URL='https://discord.com/channels/1516383995619708978/1516390796688101398';
 const LSTORE_PRODUCTS={
-  "bot-custom":{name:"Discord Bot Completo",price:29.99,image:'assets/images/services/bot-custom.svg'},
-  "discord-anti-clone":{name:"Discord Bot Anti Clone",price:9.99,image:'assets/images/services/discord-anti-clone.svg'},
-  "security-v1":{name:"Security Bot V.1",price:14.99,image:'assets/images/services/security-v1.svg'},
-  "security-v2":{name:"Security Bot V.2",price:24.99,image:'assets/images/services/security-v2.svg'},
-  "website-statico":{name:"Sito Web Statico",price:14.99,image:'assets/images/services/website-statico.svg'},
-  "debadge-veicoli":{name:"Debadge Veicoli",price:6.99,image:'assets/images/services/debadge-veicoli.svg'},
-  "handling-veicoli":{name:"Handling Veicoli",price:1.99,image:'assets/images/services/handling-veicoli.svg'},
-  "pack-20-veicoli":{name:"Pack 20 Veicoli Ready to FiveM",price:29.99,image:'assets/images/services/pack-20-veicoli.svg'},
-  "pack-50-veicoli":{name:"Pack 50 Veicoli Ready to FiveM",price:49.99,image:'assets/images/services/pack-50-veicoli.svg'},
-  "pack-100-veicoli":{name:"Pack 100 Veicoli Ready to FiveM",price:89.99,image:'assets/images/services/pack-100-veicoli.svg'},
-  "gestionale-starter":{name:"Gestionale Starter",price:199.99,image:'assets/images/services/gestionale-starter.svg'},
-  "gestionale-business":{name:"Gestionale Business",price:249.99,image:'assets/images/services/gestionale-business.svg'},
-  "gestionale-pro":{name:"Gestionale Pro",price:349.99,image:'assets/images/services/gestionale-pro.svg'},
-  "logo-attivita":{name:"Logo Attività Commerciale",price:49.99,image:'assets/images/services/logo-attivita.svg'},
-  "menu-singola":{name:"Menù Singola Risoluzione",price:19.99,image:'assets/images/services/menu-singola.svg'},
-  "menu-doppia":{name:"Menù Doppia Risoluzione",price:29.99,image:'assets/images/services/menu-doppia.svg'},
+  "bot-custom":{name:"Discord Bot Completo",price:29.99,image:'assets/images/services-v2/bot-custom.webp'},
+  "discord-anti-clone":{name:"Discord Bot Anti Clone",price:9.99,image:'assets/images/services-v2/discord-anti-clone.webp'},
+  "security-v1":{name:"Security Bot V.1",price:14.99,image:'assets/images/services-v2/security-v1.webp'},
+  "security-v2":{name:"Security Bot V.2",price:24.99,image:'assets/images/services-v2/security-v2.webp'},
+  "website-statico":{name:"Sito Web Statico",price:14.99,image:'assets/images/services-v2/website-statico.webp'},
+  "debadge-veicoli":{name:"Debadge Veicoli",price:6.99,image:'assets/images/services-v2/debadge-veicoli.webp'},
+  "handling-veicoli":{name:"Handling Veicoli",price:1.99,image:'assets/images/services-v2/handling-veicoli.webp'},
+  "pack-20-veicoli":{name:"Pack 20 Veicoli Ready to FiveM",price:29.99,image:'assets/images/services-v2/pack-20-veicoli.webp'},
+  "pack-50-veicoli":{name:"Pack 50 Veicoli Ready to FiveM",price:49.99,image:'assets/images/services-v2/pack-50-veicoli.webp'},
+  "pack-100-veicoli":{name:"Pack 100 Veicoli Ready to FiveM",price:89.99,image:'assets/images/services-v2/pack-100-veicoli.webp'},
+  "gestionale-starter":{name:"Gestionale Starter",price:199.99,image:'assets/images/services-v2/gestionale-starter.webp'},
+  "gestionale-business":{name:"Gestionale Business",price:249.99,image:'assets/images/services-v2/gestionale-business.webp'},
+  "gestionale-pro":{name:"Gestionale Pro",price:349.99,image:'assets/images/services-v2/gestionale-pro.webp'},
+  "logo-attivita":{name:"Logo Attività Commerciale",price:49.99,image:'assets/images/services-v2/logo-attivita.webp'},
+  "menu-singola":{name:"Menù Singola Risoluzione",price:19.99,image:'assets/images/services-v2/menu-singola.webp'},
+  "menu-doppia":{name:"Menù Doppia Risoluzione",price:29.99,image:'assets/images/services-v2/menu-doppia.webp'},
 
   'benvenuto':{name:'SISTEMA BENVENUTO',price:3,image:'assets/images/products/benvenuto.png'},
   'verification-system':{name:'VERIFICATION SYSTEM',price:3,image:'assets/images/products/verification-system.png'},
