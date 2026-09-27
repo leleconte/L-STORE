@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1000 700">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5f8fa"/><stop offset="1" stop-color="#dde6ec"/></linearGradient><radialGradient id="glow"><stop stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<rect width="1000" height="700" fill="url(#bg)"/><circle cx="820" cy="110" r="230" fill="url(#glow)" opacity=".8"/>
+<path d="M80 110h840M80 590h840" stroke="#1d5476" stroke-opacity=".12"/>
+<g fill="none" stroke="#1d5476" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M270 500h430l-42-105c-12-28-35-46-65-50l-210-28c-34-5-62 10-78 39l-72 122c-15 26 4 58 34 58"/><circle cx="355" cy="515" r="42"/><circle cx="615" cy="515" r="42"/><path d="M280 280h440M310 235h380M340 190h320M375 145h250"/></g>
+<g fill="#1d5476" opacity=".18"><circle cx="110" cy="110" r="7"/><circle cx="890" cy="590" r="7"/><rect x="80" y="82" width="90" height="3"/><rect x="830" y="615" width="90" height="3"/></g>
+<text x="82" y="650" fill="#1d5476" font-family="Arial,sans-serif" font-size="22" letter-spacing="7" opacity=".75">FIVEM</text>
+</svg>
