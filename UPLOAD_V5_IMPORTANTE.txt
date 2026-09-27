@@ -1,0 +1,13 @@
+L-STORE V5 MOTION + CARRELLO
+
+1. Carica TUTTI i file direttamente nella root/public_html di l-store.it, sovrascrivendo i precedenti.
+2. Carica anche .htaccess.
+3. Assicurati che carrello.html sia nella stessa cartella di index.html.
+4. Dopo il caricamento svuota eventuale cache/CDN e apri https://www.l-store.it/?v=5
+
+Novità V5:
+- animazioni e microinterazioni su tutte le pagine;
+- immagine prodotto a sinistra nelle pagine servizio desktop;
+- carrello persistente nel browser con quantità/rimozione/totale;
+- checkout carrello con PayPal.me esistente e passaggio finale Discord;
+- servizi "a partire da" restano su preventivo e non vengono inseriti nel carrello.

@@ -29,3 +29,5 @@ DirectoryIndex index.html
 </IfModule>
 
 ErrorDocument 404 /404.html
+
+# L-STORE V5 cart page is a static document at /carrello.html
