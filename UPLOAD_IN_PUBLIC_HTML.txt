@@ -1,0 +1,10 @@
+L-STORE V3 FIXED
+
+IMPORTANTE:
+1. Apri public_html (o la cartella che contiene l'attuale index.html).
+2. Carica TUTTO il contenuto di questo ZIP direttamente lì.
+3. index.html deve trovarsi direttamente in public_html, NON dentro una sottocartella LSTORE_FIXED_UPLOAD.
+4. Sovrascrivi la cartella assets esistente.
+5. Dopo l'upload fai CTRL+F5 nel browser.
+
+Questa build incorpora CSS e JavaScript direttamente nelle pagine HTML per evitare il problema visto nel video (vecchio tema scuro/asset non caricati). Le immagini nuove sono in assets/images/services-v3 e la hero è versionata come hero-v3.webp per evitare cache vecchie.
