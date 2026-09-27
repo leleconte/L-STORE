@@ -1,0 +1,13 @@
+L-STORE V4 - BUILD ROOT / NO CARTELLE ASSET NECESSARIE
+
+Ho eliminato la dipendenza dalle cartelle assets/images: tutte le immagini necessarie sono ora direttamente nella root insieme agli HTML.
+La .htaccess intercetta anche i vecchi URL delle immagini (hero-luxury, services-v2/v3, ecc.) per evitare schermate vuote se il browser ha ancora una pagina precedente in cache.
+
+CARICAMENTO:
+- estrai lo ZIP;
+- carica TUTTI i file direttamente nella stessa cartella pubblica in cui si trova index.html;
+- sovrascrivi i file esistenti;
+- assicurati che anche il file .htaccess venga caricato (e un file nascosto);
+- poi prova https://www.l-store.it/?v=4
+
+Non serve creare manualmente cartelle assets.

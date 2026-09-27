@@ -1,0 +1,31 @@
+Options -MultiViews
+DirectoryIndex index.html
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+  Header set Pragma "no-cache"
+  Header set Expires "0"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Compatibilita con HTML vecchio ancora in cache: reindirizza i vecchi asset ai file root V4.
+  RewriteRule ^assets/images/hero-luxury\.webp$ /hero-v4.webp [L]
+  RewriteRule ^assets/images/editorial/hero(?:-v3)?\.webp$ /hero-v4.webp [L]
+  RewriteRule ^assets/images/logo-light\.png$ /logo-v4.png [L]
+  RewriteRule ^assets/images/favicon\.png$ /favicon-v4.png [L]
+  RewriteRule ^assets/images/services-v[23]/([^/]+)\.webp$ /svc-$1.webp [L]
+  RewriteRule ^assets/images/services/([^/]+)\.svg$ /svc-$1.webp [L]
+  RewriteRule ^assets/images/products/([^/]+)\.png$ /legacy-$1.png [L]
+  # URL puliti -> file .html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
+</IfModule>
+
+ErrorDocument 404 /404.html
